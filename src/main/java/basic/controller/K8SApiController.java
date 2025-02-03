@@ -8,7 +8,7 @@ public class K8SApiController {
 	
 	@GetMapping(value = "/api/status")
 	public String k8sApiTest() {
-		return "Status - eks-app-01";
+		return "Status - eks-app-02";
 	}
 
 }
