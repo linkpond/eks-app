@@ -15,4 +15,8 @@ public class K8SApiController {
 	public String eksApiTest() {
 		return "Status - eks-app";
 	}
+	@GetMapping(value = "/api/status01")
+	public String eksApiTestPrivate() {
+		return "Status - eks-app-private-test";
+	}
 }
