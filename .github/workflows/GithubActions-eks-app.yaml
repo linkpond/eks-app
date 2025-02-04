@@ -62,21 +62,21 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
-    - name: Update application image version for ArgoCD
-      uses: actions/checkout@v4
-      with:
-        repository: ${{ secrets.G_USER }}/${{ secrets.G_REPOSITORY }}
-        ref: main
-        token: ${{ secrets.G_TOKEN }}
+    # - name: Update application image version for ArgoCD
+    #   uses: actions/checkout@v4
+    #   with:
+    #     repository: ${{ secrets.G_USER }}/${{ secrets.G_REPOSITORY }}
+    #     ref: main
+    #     token: ${{ secrets.G_TOKEN }}
 
-    - name: Set up Image
-      run: |
-        sed -i "s%image: ${{ secrets.AWS_ECR_ID }}.dkr.ecr.${{ secrets.AWS_ECR_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:[a-zA-Z0-9]*%image: ${{ secrets.AWS_ECR_ID }}.dkr.ecr.${{ secrets.AWS_ECR_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:${{ github.sha }}%" ./manifest/eks-app.yaml
+    # - name: Set up Image
+    #   run: |
+    #     sed -i "s%image: ${{ secrets.AWS_ECR_ID }}.dkr.ecr.${{ secrets.AWS_ECR_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:[a-zA-Z0-9]*%image: ${{ secrets.AWS_ECR_ID }}.dkr.ecr.${{ secrets.AWS_ECR_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:${{ github.sha }}%" ./manifest/eks-app.yaml
 
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "${{ secrets.G_USER_EMAIL }}"
-        git config --local user.name "${{ secrets.G_USER }}"
-        git add .
-        git commit -m "Update application image version for ArgoCD"
-        git push
+    # - name: Commit and push changes
+    #   run: |
+    #     git config --local user.email "${{ secrets.G_USER_EMAIL }}"
+    #     git config --local user.name "${{ secrets.G_USER }}"
+    #     git add .
+    #     git commit -m "Update application image version for ArgoCD"
+    #     git push
