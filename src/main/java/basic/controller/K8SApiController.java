@@ -14,13 +14,19 @@ public class K8SApiController {
 		log.info("k8sApiTest success");
 		return "Status - k8s-app";
 	}
-
+	
 	@GetMapping(value = "/api/status01")
 	public String eksApiTest() {
 		return "Status - eks-app";
 	}
+	
 	@GetMapping(value = "/api/status02")
 	public String eksApiTestPrivate() {
 		return "Status - eks-app-private-test-2025/02/04";
+	}
+	
+	@GetMapping(value = "/api/status03")
+	public String eksApiTestActuator() {
+		return "Status - eks-app-actuator-test-2025/02/04";
 	}
 }
