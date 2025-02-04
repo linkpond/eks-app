@@ -27,6 +27,6 @@ public class K8SApiController {
 	
 	@GetMapping(value = "/api/status03")
 	public String eksApiTestActuator() {
-		return "Status - eks-app-actuator-test-2025/02/04";
+		return "Status - eks-app-actuator-test-2025/02/04 13:43";
 	}
 }
